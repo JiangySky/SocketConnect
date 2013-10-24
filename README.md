@@ -4,7 +4,7 @@ SocketConnect
 
 传输协议：字节流 / JSON
 
-结构：见结构图
+结构：https://github.com/JiangySky/SocketConnect/blob/master/README.rtfd/Pasted%20Graphic.tiff?raw=true
 
 ======================================
 
