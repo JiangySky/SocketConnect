@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ve1-Yr-Zkd">
-                                <rect key="frame" x="131" y="208" width="59" height="30"/>
+                                <rect key="frame" x="98" y="208" width="59" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Connect"/>
                                 <connections>
@@ -57,10 +57,19 @@
                                 <color key="textColor" red="0.18928966985915538" green="0.02337174458914594" blue="0.78778872282608692" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePE-Ze-s5T">
+                                <rect key="frame" x="185" y="208" width="52" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Test"/>
+                                <connections>
+                                    <action selector="onTest:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="AJe-vD-avr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="btnTest" destination="ePE-Ze-s5T" id="OpM-1p-EqT"/>
                         <outlet property="tfIP" destination="FFI-mq-kxK" id="rXu-3X-TME"/>
                         <outlet property="tfPort" destination="1oN-yK-kLV" id="y34-OB-V7e"/>
                     </connections>

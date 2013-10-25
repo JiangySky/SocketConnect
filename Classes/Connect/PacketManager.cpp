@@ -26,6 +26,7 @@ Packet * PacketManager::getPacket(uint packetId)
             packet = INSTANCE(PacketTest);
             break;
         case PACKET_HEARTBEAT: // heart beat
+        case PACKET_HEARTBEAT_RES:
             packet = INSTANCE(PacketHBeat);
             break;
         case PACKET_ERROR: // error info

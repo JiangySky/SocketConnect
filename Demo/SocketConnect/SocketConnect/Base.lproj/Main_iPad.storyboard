@@ -25,6 +25,14 @@
                                     <action selector="onConnect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b31-Rf-Mut"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="krq-PM-soE">
+                                <rect key="frame" x="624" y="99" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Test"/>
+                                <connections>
+                                    <action selector="onTest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hb7-aF-OVg"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="192.168.1.130" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="odI-25-1RT">
                                 <rect key="frame" x="105" y="100" width="152" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -62,6 +70,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="btnTest" destination="krq-PM-soE" id="SwQ-Lw-LVy"/>
                         <outlet property="tfIP" destination="odI-25-1RT" id="kyo-JW-WLb"/>
                         <outlet property="tfPort" destination="aIT-BM-HTs" id="FxM-hM-wLB"/>
                     </connections>

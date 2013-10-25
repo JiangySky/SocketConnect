@@ -41,7 +41,17 @@ bool ClientConnect::init()
 
 bool ClientConnect::connected()
 {
-    return isConnect && (m_socket >= 0 || m_gamesocket >= 0);
+    if (!isConnect || (m_socket < 2 && m_gamesocket < 2)) {
+        return false;
+    }
+#if HEARTBEAT_ENABLE
+    return true;
+#else
+    int err = 0;
+    socklen_t len = sizeof(err);
+    int result = getsockopt(m_socket, SOL_SOCKET, SO_ERROR, (char*)&err, &len);
+    return (err == 0 && result >= 0);
+#endif
 }
 
 void ClientConnect::setConnected(bool conn, bool needTip)
@@ -193,7 +203,7 @@ int ClientConnect::processSend()
     if (retSize > 0 && outputStream->isCloseKey) {
         issend = outputStream->flush();
     }
-    if (issend <= 0) {
+    if (issend <= 0 || !connected()) {
         if (reconnectCount <= 0) {
             reconnectCount = RECONNECT_COUNT;
         }

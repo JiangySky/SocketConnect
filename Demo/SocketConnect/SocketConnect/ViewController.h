@@ -12,6 +12,8 @@
 
 @property (retain, nonatomic) IBOutlet UITextField *tfIP;
 @property (retain, nonatomic) IBOutlet UITextField *tfPort;
+@property (retain, nonatomic) IBOutlet UIButton *btnTest;
 - (IBAction)onConnect:(id)sender;
+- (IBAction)onTest:(id)sender;
 
 @end

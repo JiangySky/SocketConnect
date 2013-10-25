@@ -30,6 +30,7 @@
 - (void)dealloc {
     [_tfIP release];
     [_tfPort release];
+    [_btnTest release];
     [super dealloc];
 }
 
@@ -37,6 +38,11 @@
     std::string dstIP([_tfIP.text UTF8String]);
     int dstPost = [_tfPort.text integerValue];
     AppConnect::client()->startServer(dstIP, dstPost);
+    [_btnTest setEnabled:YES];
+}
+
+- (IBAction)onTest:(id)sender {
+    AppConnect::server()->sendTest("SocketConnect");
 }
 
 @end
