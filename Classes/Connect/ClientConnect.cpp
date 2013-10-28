@@ -203,7 +203,7 @@ int ClientConnect::processSend()
     if (retSize > 0 && outputStream->isCloseKey) {
         issend = outputStream->flush();
     }
-    if (issend <= 0 || !connected()) {
+    if (issend <= 0 || (retSize > 0 && !this->connected())) {
         if (reconnectCount <= 0) {
             reconnectCount = RECONNECT_COUNT;
         }
