@@ -33,6 +33,7 @@ static const std::string ErrMsg[] = {
 
 #define DATA_LOCK       0
 #define PROCESS_LOCK    0
+#define READ_BUFF       1
 
 class ClientConnect {
     bool                    isConnect;
@@ -43,6 +44,7 @@ public:
     
     int                     m_socket;
     int                     m_gamesocket;
+    SocketInputStream *     packetBuff;
     SocketInputStream *     inputStream;
     SocketOutputStream *    outputStream;
     int                     netDelay;

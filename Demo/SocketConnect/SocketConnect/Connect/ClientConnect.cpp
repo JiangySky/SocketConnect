@@ -26,6 +26,10 @@ bool ClientConnect::init()
     netDelay = 0;
     reconnectCount = 0;
     this->setConnected(false);
+#if READ_BUFF
+    packetBuff = new SocketInputStream();
+    packetBuff->init();
+#endif
     inputStream = INSTANCE(SocketInputStream);
     outputStream = INSTANCE(SocketOutputStream);
 #ifdef WIN32
@@ -301,9 +305,28 @@ bool ClientConnect::processCommand()
                     packet->requestErrMsg = ErrMsg[errorId];
                 }
                 // body
+#if READ_BUFF
+                packetBuff->cleanUp();
+                inputStream->read(packetBuff->getBuffer(), packetSize);
+                packetBuff->im_Tail = packetSize;
+#endif
 #ifdef PACKET_WITH_JSON
+#if READ_BUFF
+                compression = packetBuff->readInt();
+                bRet = packet->setData(packetBuff->readData(packetSize - 4), compression, true);
+#else
                 compression = inputStream->readInt();
                 bRet = packet->setData(inputStream->readData(packetSize - 4), compression, true);
+#endif
+#else
+#if READ_BUFF
+                readSize = packet->read(packetBuff);
+                // correction packet size
+                if (readSize < packetSize) {
+                    bRet = true;
+                } else {
+                    bRet = (readSize == packetSize);
+                }
 #else
                 readSize = packet->read(inputStream);
                 // correction packet size
@@ -312,6 +335,7 @@ bool ClientConnect::processCommand()
                 } else {
                     bRet = (readSize == packetSize);
                 }
+#endif
 #endif
                 if (!bRet) {
 #if PROCESS_LOCK

@@ -131,15 +131,18 @@ bool SocketOutputStream::isEmpty()
 
 void SocketOutputStream::cleanUp()
 {
-    om_BufferLen = DEFAULTINPUTBUFFERSIZE;
-    om_MaxBufferLen = DISCONNECTINPUTSIZE;
     om_Head = 0;
     om_Tail = 0;
     isCloseKey = false;
-    if (om_buffer) {
-        free(om_buffer);
+    if (!om_buffer || om_BufferLen != DEFAULTINPUTBUFFERSIZE) {
+        if (om_buffer) {
+            free(om_buffer);
+        }
+        om_BufferLen = DEFAULTINPUTBUFFERSIZE;
+        om_buffer = (char *)malloc(om_BufferLen * sizeof(char));
     }
-    om_buffer = (char *)malloc(om_BufferLen * sizeof(char));
+    om_BufferLen = DEFAULTINPUTBUFFERSIZE;
+    om_MaxBufferLen = DISCONNECTINPUTSIZE;
     memset(om_buffer, 0, om_BufferLen * sizeof(char));
 }
 
