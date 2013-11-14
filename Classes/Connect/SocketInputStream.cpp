@@ -203,14 +203,17 @@ bool SocketInputStream::isEmpty()
 
 void SocketInputStream::cleanUp()
 {
-    im_BufferLen = DEFAULTINPUTBUFFERSIZE;
-    im_MaxBufferLen = DISCONNECTINPUTSIZE;
     im_Head = 0;
     im_Tail = 0;
-    if (im_buffer) {
-        free(im_buffer);
+    if (!im_buffer || im_BufferLen != DEFAULTINPUTBUFFERSIZE) {
+        if (im_buffer) {
+            free(im_buffer);
+        }
+        im_BufferLen = DEFAULTINPUTBUFFERSIZE;
+        im_buffer = (char *)malloc(im_BufferLen * sizeof(char));
     }
-    im_buffer = (char *)malloc(im_BufferLen * sizeof(char));
+    im_BufferLen = DEFAULTINPUTBUFFERSIZE;
+    im_MaxBufferLen = DISCONNECTINPUTSIZE;
     memset(im_buffer, 0, im_BufferLen * sizeof(char));
 }
 

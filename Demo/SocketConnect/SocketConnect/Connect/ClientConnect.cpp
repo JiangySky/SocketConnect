@@ -337,14 +337,10 @@ bool ClientConnect::processCommand()
                 }
 #endif
 #endif
-                if (!bRet) {
-#if PROCESS_LOCK
-                    pthread_mutex_unlock(&mutex);
-#endif
-                    return false;
+                if (bRet) {
+                    packet->execute();
+                    std::cout << "<<  End  process message " << packetId << " >>\n";
                 }
-                packet->execute();
-                std::cout << "<<  End  process message " << packetId << " >>\n";
                 if (inputStream->size() == 0) {
                     break;
                 }

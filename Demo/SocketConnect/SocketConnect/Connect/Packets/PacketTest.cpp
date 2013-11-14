@@ -23,7 +23,7 @@ int PacketTest::read(SocketInputStream * iStream)
 {
     int readSize = iStream->getHead();
     // NOTE: read data from stream
-    
+    iStream->readInt();iStream->readInt();iStream->readInt();
     return iStream->getHead() - readSize;
 }
 
