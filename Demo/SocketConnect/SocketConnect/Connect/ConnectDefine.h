@@ -116,13 +116,13 @@ t_pBuffer++;	\
 #endif
 // MARK: Server IP and port
 #if CONNECT_TO_LS == 0
-#define SERVERIP        "202.55.8.155"
+#define SERVERIP        "xxx.xxx.xxx.xxx"
 #elif CONNECT_TO_LS == 1
-#define SERVERIP        "183.61.119.169"
+#define SERVERIP        "xxx.xxx.xxx.xxx"
 #elif CONNECT_TO_LS == 2
-#define SERVERIP        "218.15.113.88"
+#define SERVERIP        "xxx.xxx.xxx.xxx"
 #elif CONNECT_TO_LS == 3
-#define SERVERIP        "202.55.8.155"
+#define SERVERIP        "xxx.xxx.xxx.xxx"
 #elif CONNECT_TO_LS == 4
 #define SERVERIP        "xxx.xxx.xxx.xxx"
 #elif CONNECT_TO_LS == 5
@@ -132,15 +132,15 @@ t_pBuffer++;	\
 #elif CONNECT_TO_LS == 11
 #define SERVERIP        "192.168.1.130"
 #elif CONNECT_TO_LS == 12
-#define SERVERIP        "192.168.1.170"
+#define SERVERIP        "xxx.xxx.xxx.xxx"
 #elif CONNECT_TO_LS == 13
-#define SERVERIP        "192.168.89.127"
+#define SERVERIP        "xxx.xxx.xxx.xxx"
 #endif
 #define SERVERPROT      7000
 
 // MARK: Target to GameServer (0.cancel; 1.target)
 #define TARGET_TO_GS    0
-#define TARGET_GS_IP    "192.168.1.106"
+#define TARGET_GS_IP    "192.168.1.130"
 #define TARGET_GS_PORT  30000
 
 // MARK: Data encryption
