@@ -64,10 +64,24 @@ void ClientConnect::setConnected(bool conn, bool needTip)
     if (needTip) {
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
         dispatch_async(dispatch_get_main_queue(), ^{
-            // TODO: check net & show error
+            // MARK: check net & show error
+            if (reconnectCount-- > 0) {
+                AppConnect::client()->reconnect();
+            } else {
+                std::cout << "通讯故障，请稍后重试" << std::endl;
+            }
         });
 #elif COCOS2D_ENGINE
-        // TODO: check net & show error
+        // MARK: check net & show error
+        if (CCNetworkEnable() > kNotReachable) {
+            if (reconnectCount-- > 0) {
+                AppConnect::client()->reconnect();
+            } else {
+                CCMessageBox("通讯故障，请稍后重试", "温馨提示");
+            }
+        } else {
+            CCMessageBox("网络异常，请检查您的网络！", "温馨提示");
+        }
 #else
         // other platform or engine
 #endif
