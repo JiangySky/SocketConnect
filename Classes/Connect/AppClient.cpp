@@ -124,6 +124,7 @@ void AppClient::onResponseServerTip(PacketServerTip *packet)
     std::list<ServerTip>::iterator it = packet->tips.begin();
     while (it != packet->tips.end()) {
         cout << "ServerTip: [" << it->tipType << "] " << it->message << endl;
+        // TODO: other
         packet->tips.pop_front();
         it = packet->tips.begin();
     }

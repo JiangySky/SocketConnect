@@ -16,6 +16,15 @@
 #include "JSON/json.h"
 #include "JSON/GZipUtils.h"
 #endif
+
+#define READ_STRING(_obj)  \
+{ \
+string s = iStream->readString(); \
+FREE_SAFE(_obj); \
+MALLOC(_obj, char, s.length()); \
+memcpy(_obj, s.c_str(), s.length()); \
+}
+
 #if COCOS2D_ENGINE
 #include "cocos2d.h"
 class Packet : public cocos2d::CCObject
