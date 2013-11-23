@@ -34,6 +34,7 @@
 		DE5D8D0D1819113E0024CB39 /* SocketInputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DE5D8CF81819113E0024CB39 /* SocketInputStream.cpp */; };
 		DE5D8D0E1819113E0024CB39 /* SocketOutputStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DE5D8CFA1819113E0024CB39 /* SocketOutputStream.cpp */; };
 		DE5D8D11181917B30024CB39 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE5D8D10181917B30024CB39 /* SystemConfiguration.framework */; };
+		DE8A1CDE18409AB700C894E3 /* PacketServerTip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DE8A1CDC18409AB700C894E3 /* PacketServerTip.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,8 @@
 		DE5D8CFA1819113E0024CB39 /* SocketOutputStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SocketOutputStream.cpp; sourceTree = "<group>"; };
 		DE5D8CFB1819113E0024CB39 /* SocketOutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketOutputStream.h; sourceTree = "<group>"; };
 		DE5D8D10181917B30024CB39 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		DE8A1CDC18409AB700C894E3 /* PacketServerTip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PacketServerTip.cpp; sourceTree = "<group>"; };
+		DE8A1CDD18409AB700C894E3 /* PacketServerTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PacketServerTip.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +222,8 @@
 				DE5D8CF31819113E0024CB39 /* PacketError.h */,
 				DE5D8CF41819113E0024CB39 /* PacketHBeat.cpp */,
 				DE5D8CF51819113E0024CB39 /* PacketHBeat.h */,
+				DE8A1CDC18409AB700C894E3 /* PacketServerTip.cpp */,
+				DE8A1CDD18409AB700C894E3 /* PacketServerTip.h */,
 				DE5D8CF61819113E0024CB39 /* PacketTest.cpp */,
 				DE5D8CF71819113E0024CB39 /* PacketTest.h */,
 			);
@@ -343,6 +348,7 @@
 				DE5D8D0E1819113E0024CB39 /* SocketOutputStream.cpp in Sources */,
 				DE5D8CFE1819113E0024CB39 /* AppServer.cpp in Sources */,
 				DE5D8D081819113E0024CB39 /* Packet.cpp in Sources */,
+				DE8A1CDE18409AB700C894E3 /* PacketServerTip.cpp in Sources */,
 				DE5D8CB1181910AE0024CB39 /* ViewController.mm in Sources */,
 				DE5D8CA8181910AE0024CB39 /* AppDelegate.m in Sources */,
 				DE5D8D0C1819113E0024CB39 /* PacketTest.cpp in Sources */,
@@ -417,7 +423,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -457,7 +463,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LIBRARY = "libstdc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -574,6 +580,7 @@
 				DE5D8CCB181910AF0024CB39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DE5D8CCC181910AF0024CB39 /* Build configuration list for PBXNativeTarget "SocketConnectTests" */ = {
 			isa = XCConfigurationList;
@@ -582,6 +589,7 @@
 				DE5D8CCE181910AF0024CB39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
