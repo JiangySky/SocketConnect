@@ -23,6 +23,7 @@ bool AppClient::init()
 {
     ip = SERVERIP;
     port = SERVERPROT;
+    serverTipDelay = 0.5;
     return true;
 }
 
@@ -71,6 +72,9 @@ void AppClient::onResponse(Packet * packet)
         case PACKET_ERROR:
             this->onResponseError(packet);
             break;
+        case PACKET_SERVER_TIP:
+            this->onResponseServerTip((PacketServerTip *)packet);
+            break;
         case PACKET_TEST:
             this->onTestResponse((PacketTest *)packet);
             break;
@@ -87,6 +91,51 @@ void AppClient::onResponseError(Packet *packet)
     cout << "Error: " + packet->requestErrMsg << endl;
     // TODO: other
 }
+
+void AppClient::onResponseServerTip(PacketServerTip *packet)
+{
+#if COCOS2D_ENGINE
+    CCDIRECTOR->getScheduler()->unscheduleSelector(schedule_selector(AppClient::resetServerTip), this);
+    ccColor3B color = ccWHITE;
+    std::list<ServerTip>::iterator it = packet->tips.begin();
+    while (it != packet->tips.end()) {
+        switch (it->tipType) {
+            case kServerTipNormal:
+                color = ccGREEN;
+                break;
+            case kServerTipWarnning:
+                color = ccYELLOW;
+                break;
+            case kServerTipError:
+                color = ccRED;
+                break;
+                
+            default:
+                color = ccWHITE;
+                break;
+        }
+        CCLabelTTF::flyTip(CCMAINLAYER, it->message.c_str(), color, CCMAINLAYER->getCenter(), 20, serverTipDelay);
+        serverTipDelay += 0.5;
+        packet->tips.pop_front();
+        it = packet->tips.begin();
+    }
+    CCDIRECTOR->getScheduler()->scheduleSelector(schedule_selector(AppClient::resetServerTip), this, serverTipDelay, false);
+#else
+    std::list<ServerTip>::iterator it = packet->tips.begin();
+    while (it != packet->tips.end()) {
+        cout << "ServerTip: [" << it->tipType << "] " << it->message << endl;
+        packet->tips.pop_front();
+        it = packet->tips.begin();
+    }
+#endif
+}
+#if COCOS2D_ENGINE
+void AppClient::resetServerTip(float time)
+{
+    serverTipDelay = 0.5;
+    CCDIRECTOR->getScheduler()->unscheduleSelector(schedule_selector(AppClient::resetServerTip), this);
+}
+#endif
 
 void AppClient::onTestResponse(PacketTest *packet)
 {

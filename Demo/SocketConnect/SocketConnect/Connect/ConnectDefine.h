@@ -180,6 +180,7 @@ typedef enum _RequestType {
     PACKET_DEBUG                    = 9996,     // debug
     PACKET_TEST                     = 11023,    // test
     PACKET_ERROR                    = 49991,    // error
+    PACKET_SERVER_TIP               = 49993,    // server tip
     PACKET_MAX                      = 65500,    // upper limit
     
     // NOTE: other packet id
