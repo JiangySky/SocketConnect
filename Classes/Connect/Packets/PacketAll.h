@@ -9,8 +9,9 @@
 #ifndef NewProject_PacketAll_h
 #define NewProject_PacketAll_h
 
-#include "PacketTest.h"
-#include "PacketHBeat.h"
 #include "PacketError.h"
+#include "PacketHBeat.h"
+#include "PacketServerTip.h"
+#include "PacketTest.h"
 
 #endif

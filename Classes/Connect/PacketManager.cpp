@@ -22,15 +22,18 @@ bool PacketManager::init()
 Packet * PacketManager::getPacket(uint packetId)
 {
     switch (packetId) {
-        case PACKET_TEST: // test
-            packet = INSTANCE(PacketTest);
+        case PACKET_ERROR: // error info
+            packet = INSTANCE(PacketError);
             break;
         case PACKET_HEARTBEAT: // heart beat
         case PACKET_HEARTBEAT_RES:
             packet = INSTANCE(PacketHBeat);
             break;
-        case PACKET_ERROR: // error info
-            packet = INSTANCE(PacketError);
+        case PACKET_SERVER_TIP: // server tip
+            packet = INSTANCE(PacketServerTip);
+            break;
+        case PACKET_TEST: // test
+            packet = INSTANCE(PacketTest);
             break;
             
         default:

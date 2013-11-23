@@ -29,6 +29,7 @@ class AppClient
 public:
     string ip;
     int port;
+    float serverTipDelay;
     
     AppClient();
     virtual ~AppClient();
@@ -59,7 +60,16 @@ public:
      @param     packet : Packet
      */
     void onResponseError(Packet * packet);
-
+    
+    /**
+     @brief     process server tip response in main thread
+     @param     packet : PacketServerTip
+     */
+    void onResponseServerTip(PacketServerTip * packet);
+#if COCOS2D_ENGINE
+    void resetServerTip(float t = 0);
+#endif
+    
 #pragma mark -
     
     void onTestResponse(PacketTest * packet);

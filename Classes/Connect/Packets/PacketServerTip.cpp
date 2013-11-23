@@ -1,33 +1,35 @@
 //
-//  PacketTest.cpp
-//  NewProject
+//  PacketServerTip.cpp
+//  Hero
 //
-//  Created by Jiangy on 13-1-5.
+//  Created by Jiangy on 13-11-23.
 //  Copyright (c) 2013 35VI. All rights reserved.
 //
 
-#include "PacketTest.h"
+#include "PacketServerTip.h"
 #include "../AppConnect.h"
 
-int PacketTest::write(SocketOutputStream * oStream)
+int PacketServerTip::write(SocketOutputStream * oStream)
 {
     int writeSize = oStream->getTail();
     // NOTE: write data to stream
-    oStream->writeInt(testId);
-    oStream->writeString(msg);
     
-    return oStream->getTail() - writeSize;
+    return oStream->getTail(writeSize) - writeSize;
 }
 
-int PacketTest::read(SocketInputStream * iStream)
+int PacketServerTip::read(SocketInputStream * iStream)
 {
     int readSize = iStream->getHead();
     // NOTE: read data from stream
-
-    return iStream->getHead() - readSize;
+    ServerTip tip;
+    tip.tipType = iStream->readInt();
+    tip.message = iStream->readString();
+    tips.push_back(tip);
+    
+    return iStream->getHead(readSize) - readSize;
 }
 
-int PacketTest::execute()
+int PacketServerTip::execute()
 {
     switch (requestResult) {
         case kResultSuccess: { // Success
@@ -57,3 +59,4 @@ int PacketTest::execute()
     }
     return -1;
 }
+
